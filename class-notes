@@ -1,0 +1,58 @@
+Homework:
+1- selenium practice
+https://rahulshettyacademy.com/AutomationPractice/
+
+- radio button
+- suggestion class
+- dropdown
+- checkbox
+- switch window
+- switch alert
+- web table
+- element displayed
+- scroll in web table
+- get text and validate the number
+- mouse hover (with scroll to view)
+- switch to iframe
+
+2- recreate the framework that we have created class
+
+final boot camp:
+
+build teams of 4 people
+
+1)entertainment, media: HBO, netflix, dnbc
+2)social media: facebook, linkedIn, instagram, twitter
+3)e-commerce: alibaba, ebay
+4)financial: citibank, chaze, metlife, statefarm, geico
+5)healthcare: obamacare, cigna, tmz, metroplus, united heathcare
+6)retail: costco, walmart, target, bed beth and beyond
+
+choose team lead
+
+divide work 70, 10, 10, 10
+
+example team1:
+shamson  HBO      70% 10% 10% 10%
+ashley   cigna    70% 10% 10% 10%
+djamel   alibaba  70% 10% 10% 10%
+leonid   walmart  70% 10% 10% 10% (L)
+
+create the framework (L)
+create github repo and add team members (L)
+
+member clone the project to local
+push your code to your own branch
+raise the merge request
+lead merges the code to master branch (L)
+run your framework in jenkins and share the report (L)
+
+100 test cases per person (do 70 give 10/10/10 to teammate) - I need to
+add comment precising your name (qa tester name who automated the test case)
+
+do the agile scrum ceremonies:
+- planning meeting (every monday - 1 hour)
+- daily standups (every day - 10 min)
+- demo meeting (every saturday - 1 hour)
+
+- final demo is gonna be for the last 2 days of the training
