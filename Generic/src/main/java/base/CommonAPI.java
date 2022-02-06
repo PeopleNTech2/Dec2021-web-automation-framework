@@ -19,11 +19,11 @@ public class CommonAPI {
 
     @BeforeMethod
     public void setUp(){
-        System.setProperty("webdriver.chrome.driver", "/Users/nacer-zimu/IdeaProjects/Dec2021-web-automation-framework/Generic/src/drivers/chromedriver");
+        System.setProperty("webdriver.chrome.driver", "../Generic/src/drivers/chromedriver.exe");
         driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.manage().window().maximize();
-        driver.get("https://www.amazon.com/");
+        driver.get("https:/rahulshettyacademy.com/AutomationPractice/");
     }
 
     @AfterMethod
