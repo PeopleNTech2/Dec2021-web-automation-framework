@@ -3,14 +3,17 @@ package us.piit.menu;
 import base.CommonAPI;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import us.piit.HomePage;
 
 public class CheckWatchList extends CommonAPI{
 
+    HomePage homePage = new HomePage();
+
     @Test
     public void checkWatchList() {
-        hoverOver("//*[text()='Account & Lists']");
+        homePage.hoverOverHelloMenu(driver);
         waitFor(1);
-        click("//span[contains(text(),'Watchlist')]");
+        homePage.clickOnWatchList();
         Assert.assertEquals(getTitle(), "Amazon Sign-In");
     }
 }

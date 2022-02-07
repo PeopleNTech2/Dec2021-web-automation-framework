@@ -2,11 +2,14 @@ package us.piit.search;
 
 import base.CommonAPI;
 import org.testng.annotations.Test;
+import us.piit.HomePage;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class SearchMultipleItems extends CommonAPI{
+
+    HomePage homePage = new HomePage();
 
     public static List<String> getItemValues(){
         List<String> itemList = new ArrayList<>();
@@ -25,8 +28,7 @@ public class SearchMultipleItems extends CommonAPI{
     public void searchItems(){
         List<String> items = getItemValues();
         for (String item: items) {
-            typeAndEnter("//*[@id='twotabsearchtextbox']", item);
-            clear("//*[@id='twotabsearchtextbox']");
+            homePage.searchInOneClickAndClear(item);
         }
 
     }

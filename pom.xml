@@ -13,7 +13,6 @@
       <module>Amazon</module>
       <module>StateFarm</module>
       <module>Walmart</module>
-      <module>Practice</module>
   </modules>
 
   <name>Dec2021-web-automation-framework</name>

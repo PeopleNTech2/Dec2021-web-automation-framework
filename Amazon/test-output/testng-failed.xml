@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite guice-stage="DEVELOPMENT" name="Failed suite [Amazon Automation]">
+  <parameter name="os" value="windows"/>
+  <parameter name="browserName" value="chrome"/>
+  <parameter name="url" value="https://www.amazon.com"/>
+  <test thread-count="5" name="Amazon test(failed)">
+    <classes>
+      <class name="us.piit.menu.CheckWatchList">
+        <methods>
+          <include name="afterMethod"/>
+          <include name="checkWatchList"/>
+          <include name="setUp"/>
+        </methods>
+      </class> <!-- us.piit.menu.CheckWatchList -->
+    </classes>
+  </test> <!-- Amazon test(failed) -->
+</suite> <!-- Failed suite [Amazon Automation] -->

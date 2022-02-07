@@ -29,4 +29,18 @@
         </dependency>
     </dependencies>
 
+    <build>
+        <plugins>
+            <plugin>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.22.1</version>
+                <configuration>
+                    <suiteXmlFiles>
+                        <suiteXmlFile>C:\Users\PeopleNTech NY Class\IdeaProjects\Dec2021-web-automation-framework\Amazon\src\test\resources\Runner.xml</suiteXmlFile>
+                    </suiteXmlFiles>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
 </project>
