@@ -7,9 +7,9 @@ import us.piit.HomePage;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SearchMultipleItems extends CommonAPI{
+public class TestSearchMultipleItems extends CommonAPI{
 
-    HomePage homePage = new HomePage();
+    HomePage homePage = new HomePage(driver);
 
     public static List<String> getItemValues(){
         List<String> itemList = new ArrayList<>();

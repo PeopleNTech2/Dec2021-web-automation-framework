@@ -8,9 +8,11 @@
 
     <test name="Amazon test">
         <classes>
-            <class name="us.piit.menu.CheckWatchList"></class>
-<!--            <class name="us.piit.search.SearchSingleElement"></class>-->
-<!--            <class name="us.piit.search.SearchMultipleItems"></class>-->
+<!--            <class name="us.piit.menu.TestCheckWatchList"></class>-->
+<!--            <class name="us.piit.search.TestSearchSingleItem"></class>-->
+<!--            <class name="us.piit.search.TestSearchMultipleItems"></class>-->
+<!--            <class name="us.piit.login.TestLogin"></class>-->
+            <class name="us.piit.purchase.TestPurchase"></class>
         </classes>
     </test>
 </suite>

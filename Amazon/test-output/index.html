@@ -26,7 +26,7 @@
       <span class="top-banner-title-font">Test results</span>
       <button class="button" id="button">Switch Retro Theme</button> <!-- button -->
       <br/>
-      <span class="top-banner-font-1">1 suite, 1 failed test</span>
+      <span class="top-banner-font-1">1 suite</span>
     </div> <!-- top-banner-root -->
     <div class="navigator-root">
       <div class="navigator-suite-header">
@@ -40,7 +40,7 @@
         <div class="rounded-window">
           <div class="suite-header light-rounded-window-top">
             <a href="#" class="navigator-link" panel-name="suite-Amazon_Automation">
-              <span class="suite-name border-failed">Amazon Automation</span>
+              <span class="suite-name border-passed">Amazon Automation</span>
             </a> <!-- navigator-link -->
           </div> <!-- suite-header light-rounded-window-top -->
           <div class="navigator-suite-content">
@@ -93,21 +93,21 @@
               <div class="suite-section-content">
                 <ul>
                   <li>
-                    <span class="method-stats">1 method, 1 failed,   </span>
+                    <span class="method-stats">1 method,   1 passed</span>
                   </li>
                   <li>
-                    <span class="method-list-title failed">Failed methods</span>
-                    <span class="show-or-hide-methods failed">
-                      <a href="#" panel-name="suite-Amazon_Automation" class="hide-methods failed suite-Amazon_Automation"> (hide)</a> <!-- hide-methods failed suite-Amazon_Automation -->
-                      <a href="#" panel-name="suite-Amazon_Automation" class="show-methods failed suite-Amazon_Automation"> (show)</a> <!-- show-methods failed suite-Amazon_Automation -->
+                    <span class="method-list-title passed">Passed methods</span>
+                    <span class="show-or-hide-methods passed">
+                      <a href="#" panel-name="suite-Amazon_Automation" class="hide-methods passed suite-Amazon_Automation"> (hide)</a> <!-- hide-methods passed suite-Amazon_Automation -->
+                      <a href="#" panel-name="suite-Amazon_Automation" class="show-methods passed suite-Amazon_Automation"> (show)</a> <!-- show-methods passed suite-Amazon_Automation -->
                     </span>
-                    <div class="method-list-content failed suite-Amazon_Automation">
+                    <div class="method-list-content passed suite-Amazon_Automation">
                       <span>
-                        <img width="3%" src="failed.png"/>
-                        <a href="#" class="method navigator-link" panel-name="suite-Amazon_Automation" title="us.piit.menu.CheckWatchList" hash-for-method="checkWatchList">checkWatchList</a> <!-- method navigator-link -->
+                        <img width="3%" src="passed.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-Amazon_Automation" title="us.piit.purchase.TestPurchase" hash-for-method="addToCartAndCheckItem">addToCartAndCheckItem</a> <!-- method navigator-link -->
                       </span>
                       <br/>
-                    </div> <!-- method-list-content failed suite-Amazon_Automation -->
+                    </div> <!-- method-list-content passed suite-Amazon_Automation -->
                   </li>
                 </ul>
               </div> <!-- suite-section-content -->
@@ -119,32 +119,21 @@
     <div class="wrapper">
       <div class="main-panel-root">
         <div panel-name="suite-Amazon_Automation" class="panel Amazon_Automation">
-          <div class="suite-Amazon_Automation-class-failed">
+          <div class="suite-Amazon_Automation-class-passed">
             <div class="main-panel-header rounded-window-top">
-              <img src="failed.png"/>
-              <span class="class-name">us.piit.menu.CheckWatchList</span>
+              <img src="passed.png"/>
+              <span class="class-name">us.piit.purchase.TestPurchase</span>
             </div> <!-- main-panel-header rounded-window-top -->
             <div class="main-panel-content rounded-window-bottom">
               <div class="method">
                 <div class="method-content">
-                  <a name="checkWatchList">
-                  </a> <!-- checkWatchList -->
-                  <span class="method-name">checkWatchList</span>
-                  <div class="stack-trace">java.lang.IllegalArgumentException: Must provide a location for a move action.
-	at org.openqa.selenium.interactions.MoveMouseAction.&lt;init&gt;(MoveMouseAction.java:37)
-	at org.openqa.selenium.interactions.Actions.moveToElement(Actions.java:362)
-	at base.CommonAPI.hoverOver(CommonAPI.java:102)
-	at us.piit.HomePage.hoverOverHelloMenu(HomePage.java:62)
-	at us.piit.menu.CheckWatchList.checkWatchList(CheckWatchList.java:14)
-	at java.util.ArrayList.forEach(ArrayList.java:1257)
-	at com.intellij.rt.testng.IDEARemoteTestNG.run(IDEARemoteTestNG.java:66)
-	at com.intellij.rt.testng.RemoteTestNGStarter.main(RemoteTestNGStarter.java:109)
-... Removed 24 stack frames
-</div> <!-- stack-trace -->
+                  <a name="addToCartAndCheckItem">
+                  </a> <!-- addToCartAndCheckItem -->
+                  <span class="method-name">addToCartAndCheckItem</span>
                 </div> <!-- method-content -->
               </div> <!-- method -->
             </div> <!-- main-panel-content rounded-window-bottom -->
-          </div> <!-- suite-Amazon_Automation-class-failed -->
+          </div> <!-- suite-Amazon_Automation-class-passed -->
         </div> <!-- panel Amazon_Automation -->
         <div panel-name="test-xml-Amazon_Automation" class="panel">
           <div class="main-panel-header rounded-window-top">
@@ -160,7 +149,7 @@
   &lt;parameter name=&quot;url&quot; value=&quot;https://www.amazon.com&quot;/&gt;
   &lt;test thread-count=&quot;5&quot; name=&quot;Amazon test&quot;&gt;
     &lt;classes&gt;
-      &lt;class name=&quot;us.piit.menu.CheckWatchList&quot;/&gt;
+      &lt;class name=&quot;us.piit.purchase.TestPurchase&quot;/&gt;
     &lt;/classes&gt;
   &lt;/test&gt; &lt;!-- Amazon test --&gt;
 &lt;/suite&gt; &lt;!-- Amazon Automation --&gt;
@@ -202,14 +191,14 @@ data.addColumn('string', 'Class');
 data.addColumn('number', 'Time (ms)');
 data.addRows(1);
 data.setCell(0, 0, 0)
-data.setCell(0, 1, 'checkWatchList')
-data.setCell(0, 2, 'us.piit.menu.CheckWatchList')
-data.setCell(0, 3, 8);
+data.setCell(0, 1, 'addToCartAndCheckItem')
+data.setCell(0, 2, 'us.piit.purchase.TestPurchase')
+data.setCell(0, 3, 13010);
 window.suiteTableData['Amazon_Automation']= { tableData: data, tableDiv: 'times-div-Amazon_Automation'}
 return data;
 }
               </script>
-              <span class="suite-total-time">Total running time: 8 ms</span>
+              <span class="suite-total-time">Total running time: 13 seconds</span>
               <div id="times-div-Amazon_Automation">
               </div> <!-- times-div-Amazon_Automation -->
             </div> <!-- times-div -->
@@ -235,20 +224,18 @@ return data;
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <div class="chronological-class">
-              <div class="chronological-class-name">us.piit.menu.CheckWatchList</div> <!-- chronological-class-name -->
+              <div class="chronological-class-name">us.piit.purchase.TestPurchase</div> <!-- chronological-class-name -->
               <div class="configuration-method before">
                 <span class="method-name">setUp(windows, chrome, https://www.amazon.com)</span>
                 <span class="method-start">0 ms</span>
               </div> <!-- configuration-method before -->
               <div class="test-method">
-                <img src="failed.png">
-                </img>
-                <span class="method-name">checkWatchList</span>
-                <span class="method-start">11569 ms</span>
+                <span class="method-name">addToCartAndCheckItem</span>
+                <span class="method-start">12383 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-method after">
                 <span class="method-name">afterMethod</span>
-                <span class="method-start">11585 ms</span>
+                <span class="method-start">25398 ms</span>
               </div> <!-- configuration-method after -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->

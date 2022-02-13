@@ -5,23 +5,33 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
 import java.util.List;
 
 public class HomePage extends CommonAPI {
 
+    public HomePage(WebDriver driver){
+        super.driver = driver;
+        PageFactory.initElements(driver, this);
+    }
+
     @FindBy(xpath = "//*[@id='twotabsearchtextbox']")
     WebElement searchField;
-    @FindBy(id = "nav-search-submit-button]")
+    @FindBy(id = "nav-search-submit-button")
     WebElement searchButton;
     @FindBy(xpath = "//select[@id='searchDropdownBox']")
     WebElement menuDropdown;
     @FindBy (css = "#searchDropdownBox option")
     List<WebElement> menuDropdownOptions;
     @FindBy (xpath = "//*[text()='Account & Lists']")
-    WebElement helloMenu;
+    WebElement floatingMenu;
     @FindBy (xpath = "//span[contains(text(),'Watchlist')]]")
     WebElement watchListLink;
+    @FindBy(xpath = "//span[text()='Sign in']")
+    WebElement signInButton;
+    @FindBy(xpath = "//span[@id='nav-cart-count']")
+    WebElement cart;
 
     public void searchElement(String itemToSearch){
         type(searchField, itemToSearch);
@@ -58,11 +68,19 @@ public class HomePage extends CommonAPI {
         }
     }
 
-    public void hoverOverHelloMenu(WebDriver driver){
-        hoverOver(driver, helloMenu);
+    public void hoverOverFlyOutMenu(WebDriver driver){
+        hoverOver(driver, floatingMenu);
     }
 
     public void clickOnWatchList(){
-        clickById(watchListLink);
+        click(watchListLink);
+    }
+
+    public void clickOnSignInButton(){
+        click(signInButton);
+    }
+
+    public void clickOnCart(){
+        click(cart);
     }
 }

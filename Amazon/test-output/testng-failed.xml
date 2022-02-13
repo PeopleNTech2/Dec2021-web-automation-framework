@@ -6,13 +6,13 @@
   <parameter name="url" value="https://www.amazon.com"/>
   <test thread-count="5" name="Amazon test(failed)">
     <classes>
-      <class name="us.piit.menu.CheckWatchList">
+      <class name="us.piit.purchase.TestPurchase">
         <methods>
           <include name="afterMethod"/>
-          <include name="checkWatchList"/>
           <include name="setUp"/>
+          <include name="addToCartAndCheckItem"/>
         </methods>
-      </class> <!-- us.piit.menu.CheckWatchList -->
+      </class> <!-- us.piit.purchase.TestPurchase -->
     </classes>
   </test> <!-- Amazon test(failed) -->
 </suite> <!-- Failed suite [Amazon Automation] -->

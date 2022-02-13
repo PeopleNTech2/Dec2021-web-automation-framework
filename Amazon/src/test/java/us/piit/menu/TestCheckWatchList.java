@@ -5,13 +5,13 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import us.piit.HomePage;
 
-public class CheckWatchList extends CommonAPI{
+public class TestCheckWatchList extends CommonAPI{
 
-    HomePage homePage = new HomePage();
+    HomePage homePage = new HomePage(driver);
 
     @Test
     public void checkWatchList() {
-        homePage.hoverOverHelloMenu(driver);
+        homePage.hoverOverFlyOutMenu(driver);
         waitFor(1);
         homePage.clickOnWatchList();
         Assert.assertEquals(getTitle(), "Amazon Sign-In");

@@ -9,18 +9,18 @@ import us.piit.HomePage;
 
 import java.util.List;
 
-public class SelectMenuOptions extends CommonAPI{
-
-    HomePage homePage = new HomePage();
+public class TestSelectMenuOptions extends CommonAPI{
 
     @Test
     public void clickOnBabyChoice() {
+        HomePage homePage = new HomePage(driver);
         homePage.selectDropdownOption("books");
         waitFor(3);
     }
 
     @Test
     public void clickOnBooksOptionInDropdownList(){
+        HomePage homePage = new HomePage(driver);
         List<WebElement> list = homePage.selectDropdownOptions();
         for (WebElement element: list) {
             if(element.getText().equals("Books")){
@@ -32,6 +32,7 @@ public class SelectMenuOptions extends CommonAPI{
 
     //@Test
     public void clickOnDropdownOptionInListWithoutSelectClass() {
+        HomePage homePage = new HomePage(driver);
         homePage.clickOnMenuDropDown();
         homePage.selectFromDropdownOptionsList("Alexa skills");
     }

@@ -18,7 +18,6 @@ import java.util.concurrent.TimeUnit;
 public class CommonAPI {
 
     public WebDriver driver;
-    String path = System.getProperty("user.dir");
 
     @Parameters({"os","browserName","url"})
     @BeforeMethod
@@ -31,16 +30,16 @@ public class CommonAPI {
     public WebDriver getDriver(String os, String browserName){
         if(browserName.equalsIgnoreCase("chrome")){
             if(os.equalsIgnoreCase("windows")){
-                System.setProperty("webdriver.chrome.driver", path+"/Generic/src/drivers/chromedriver.exe");
+                System.setProperty("webdriver.chrome.driver", "../Generic/src/drivers/chromedriver.exe");
             }else if(os.equalsIgnoreCase("mac")){
-                System.setProperty("webdriver.chrome.driver", path+"/Generic/src/drivers/chromedriver");
+                System.setProperty("webdriver.chrome.driver", "../Generic/src/drivers/chromedriver");
             }
             driver = new ChromeDriver();
         }else if(browserName.equalsIgnoreCase("firefox")){
             if(os.equalsIgnoreCase("windows")){
-                System.setProperty("webdriver.gecko.driver", path+"/Generic/src/drivers/geckodriver.exe");
+                System.setProperty("webdriver.gecko.driver", "../Generic/src/drivers/geckodriver.exe");
             }else if(os.equalsIgnoreCase("mac")){
-                System.setProperty("webdriver.gecko.driver", path+"/Generic/src/drivers/geckodriver");
+                System.setProperty("webdriver.gecko.driver", "../Generic/src/drivers/geckodriver");
             }
             driver = new FirefoxDriver();
         }
@@ -69,10 +68,6 @@ public class CommonAPI {
     }
     public void click(WebElement element){
         element.click();
-    }
-    public void clickById(WebElement element){
-        element.click();
-
     }
     public void clear(WebElement element){
         element.clear();
