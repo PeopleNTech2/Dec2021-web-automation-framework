@@ -5,8 +5,15 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import us.piit.HomePage;
 import us.piit.LoginPage;
+import utility.GetProperties;
+
+import java.util.Properties;
 
 public class TestLogin extends CommonAPI {
+
+    Properties prop = GetProperties.loadProperties("src/test/resources/config.properties");
+    String username = prop.getProperty("username");
+    String password = prop.getProperty("password");
 
     @Test
     public void loginWithInvalidEmail(){

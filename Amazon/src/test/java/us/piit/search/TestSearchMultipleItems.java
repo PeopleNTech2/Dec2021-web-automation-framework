@@ -3,13 +3,18 @@ package us.piit.search;
 import base.CommonAPI;
 import org.testng.annotations.Test;
 import us.piit.HomePage;
+import utility.DataReader;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class TestSearchMultipleItems extends CommonAPI{
 
-    HomePage homePage = new HomePage(driver);
+    DataReader dr = new DataReader();
+
+    public List<String> getItemsFromExcel(){
+        return dr.getEntireColumnForGivenHeader("..\\Amazon\\src\\data\\my_data.xlsx", "Sheet1",  "items");
+    }
 
     public static List<String> getItemValues(){
         List<String> itemList = new ArrayList<>();
@@ -24,10 +29,12 @@ public class TestSearchMultipleItems extends CommonAPI{
         return itemList;
     }
 
+
+
     @Test
     public void searchItems(){
-        List<String> items = getItemValues();
-        for (String item: items) {
+        HomePage homePage = new HomePage(driver);
+        for (String item: getItemsFromExcel()) {
             homePage.searchInOneClickAndClear(item);
         }
 

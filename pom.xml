@@ -45,6 +45,35 @@
         <artifactId>selenium-java</artifactId>
         <version>4.1.1</version>
       </dependency>
+      <!-- https://mvnrepository.com/artifact/org.apache.poi/poi-ooxml -->
+      <dependency>
+        <groupId>org.apache.poi</groupId>
+        <artifactId>poi-ooxml</artifactId>
+        <version>5.2.0</version>
+      </dependency>
+      <!-- extent reports -->
+      <dependency>
+        <groupId>com.relevantcodes</groupId>
+        <artifactId>extentreports</artifactId>
+        <version>2.41.2</version>
+      </dependency>
+      <dependency>
+        <groupId>org.apache.commons</groupId>
+        <artifactId>commons-lang3</artifactId>
+        <version>3.7</version>
+      </dependency>
+      <!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
+      <dependency>
+        <groupId>mysql</groupId>
+        <artifactId>mysql-connector-java</artifactId>
+        <version>8.0.27</version>
+      </dependency>
+      <!-- https://mvnrepository.com/artifact/org.mongodb/mongo-java-driver -->
+      <dependency>
+        <groupId>org.mongodb</groupId>
+        <artifactId>mongo-java-driver</artifactId>
+        <version>3.12.10</version>
+      </dependency>
     </dependencies>
   </dependencyManagement>
 
