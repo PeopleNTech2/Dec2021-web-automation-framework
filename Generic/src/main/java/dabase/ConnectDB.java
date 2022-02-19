@@ -2,10 +2,8 @@ package dabase;
 
 import com.mongodb.MongoClient;
 import com.mongodb.client.MongoDatabase;
+import utility.Utilities;
 
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
 import java.sql.*;
 import java.sql.Connection;
 import java.util.ArrayList;
@@ -14,6 +12,8 @@ import java.util.Properties;
 
 public class ConnectDB {
 
+    Properties prop = Utilities.loadProperties("../config.properties");
+
     public static MongoDatabase mongoDatabase = null;
 
     public static Connection connect = null;
@@ -21,32 +21,30 @@ public class ConnectDB {
     public static PreparedStatement ps = null;
     public static ResultSet resultSet = null;
 
-    public Properties loadProperties() throws IOException {
-        Properties prop = new Properties();
-        InputStream ism = new FileInputStream("src/main/java/resources/secret.properties");
-        prop.load(ism);
-        ism.close();
-        return prop;
-    }
-    public Connection connectToMySql() throws IOException, SQLException, ClassNotFoundException {
-        Properties prop = loadProperties();
+
+    public Connection connectToMySql() {
         String driverClass = prop.getProperty("MYSQLJDBC.driver");
         String url = prop.getProperty("MYSQLJDBC.url");
         String userName = prop.getProperty("MYSQLJDBC.userName");
         String password = prop.getProperty("MYSQLJDBC.password");
-        Class.forName(driverClass);
-        connect = DriverManager.getConnection(url,userName,password);
+        try {
+            Class.forName(driverClass);
+            connect = DriverManager.getConnection(url,userName,password);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
         System.out.println("Database is connected");
         return connect;
     }
     public MongoDatabase connectToMongoDB() {
+        String databaseName = prop.getProperty("mongodb.db.name");
         MongoClient mongoClient = new MongoClient();
-        mongoDatabase = mongoClient.getDatabase("students");
+        mongoDatabase = mongoClient.getDatabase(databaseName);
         System.out.println("Database Connected");
-
         return mongoDatabase;
     }
-    public List<String> readDataBase(String tableName, String columnName)throws Exception{
+    public List<String> readMysqlDataBaseColumn(String tableName, String columnName){
         List<String> data = new ArrayList<String>();
 
         try {
@@ -54,8 +52,8 @@ public class ConnectDB {
             statement = connect.createStatement();
             resultSet = statement.executeQuery("select * from " + tableName);
             data = getResultSetData(resultSet, columnName);
-        } catch (ClassNotFoundException e) {
-            throw e;
+        } catch (Exception e) {
+            e.printStackTrace();
         }finally{
             close();
         }
@@ -73,10 +71,10 @@ public class ConnectDB {
                 connect.close();
             }
         }catch(Exception e){
-
+            e.printStackTrace();
         }
     }
-    private List<String> getResultSetData(ResultSet resultSet2, String columnName) throws SQLException {
+    private List<String> getResultSetData(ResultSet resultSet, String columnName) throws SQLException {
         List<String> dataList = new ArrayList<String>();
         while(resultSet.next()){
             String itemName = resultSet.getString(columnName);
@@ -93,17 +91,12 @@ public class ConnectDB {
             ps.executeUpdate();
             ps = connect.prepareStatement("CREATE TABLE `"+tableName+"` (`ID` int(11) NOT NULL AUTO_INCREMENT,`SortingNumbers` bigint(20) DEFAULT NULL,  PRIMARY KEY (`ID`) );");
             ps.executeUpdate();
-            for(int n=0; n<ArrayData.length; n++){
-                ps = connect.prepareStatement("INSERT INTO "+tableName+" ( "+columnName+" ) VALUES(?)");
-                ps.setInt(1,ArrayData[n]);
+            for (int aArrayData : ArrayData) {
+                ps = connect.prepareStatement("INSERT INTO " + tableName + " ( " + columnName + " ) VALUES(?)");
+                ps.setInt(1, aArrayData);
                 ps.executeUpdate();
             }
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
@@ -115,25 +108,20 @@ public class ConnectDB {
             ps = connect.prepareStatement("INSERT INTO "+tableName+" ( "+columnName+" ) VALUES(?)");
             ps.setString(1,ArrayData);
             ps.executeUpdate();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    public List<String> directDatabaseQueryExecute(String passQuery,String dataColumn)throws Exception{
+    public List<String> directDatabaseQueryExecute(String passQuery,String dataColumn){
         List<String> data = new ArrayList<String>();
-
         try {
             connectToMySql();
             statement = connect.createStatement();
             resultSet = statement.executeQuery(passQuery);
             data = getResultSetData(resultSet, dataColumn);
-        } catch (ClassNotFoundException e) {
-            throw e;
+        } catch (Exception e) {
+            e.printStackTrace();
         }finally{
             close();
         }
@@ -145,15 +133,16 @@ public class ConnectDB {
         try {
             connectToMySql();
             ps = connect.prepareStatement("INSERT INTO "+tableName+" ( " + columnName1 + "," + columnName2 + " ) VALUES(?,?)");
-            ps.setString(1,"Ankita Sing");
+            ps.setString(1,"John Doe");
             ps.setInt(2,3590);
             ps.executeUpdate();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public static void main(String[] args) {
+        ConnectDB cdb = new ConnectDB();
+        cdb.connectToMySql();
     }
 }

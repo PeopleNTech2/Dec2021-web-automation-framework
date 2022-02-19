@@ -15,13 +15,13 @@ public class TestSearchSingleItem extends CommonAPI{
         homePage.searchElement("java book");
         Assert.assertEquals(getTitle(), "Amazon.com : java book");
     }
-    @Test
+    //@Test
     public void searchSeleniumBook(){
         HomePage homePage = new HomePage(driver);
         homePage.searchElement("selenium book");
         Assert.assertEquals(getTitle(), "Amazon.com : selenium book");
     }
-    @Test
+    //@Test
     public void searchComputer(){
         HomePage homePage = new HomePage(driver);
         homePage.searchInOneClick("computer");

@@ -16,7 +16,7 @@ import org.testng.annotations.*;
 import org.testng.annotations.Optional;
 import reporting.ExtentManager;
 import reporting.ExtentTestManager;
-import utility.GetProperties;
+import utility.Utilities;
 
 import java.io.File;
 import java.io.IOException;
@@ -34,10 +34,12 @@ public class CommonAPI {
 
     public WebDriver driver;
 
-    Properties prop = GetProperties.loadProperties("C:\\Users\\PeopleNTech NY Class\\IdeaProjects\\Dec2021-web-automation-framework\\Amazon\\src\\test\\resources\\config.properties");
-
-    String browserstackUsername = "nacerhadjsaid1";
-    String browserstackPassword = "pK4miZ8sp15afqsvGckE";
+    Properties prop = Utilities.loadProperties(Utilities.projectPath()+"/config.properties");
+    String browserstackUsername = prop.getProperty("browserstack.username");
+    String browserstackPassword = prop.getProperty("browserstack.password");
+    String takeScreenshot = prop.getProperty("take.screenshot", "false");
+    String waitTime = prop.getProperty("wait.time", "10");
+    String windowMaximize = prop.getProperty("window.maximize", "false");
 
     public static com.relevantcodes.extentreports.ExtentReports extent;
 
@@ -79,8 +81,10 @@ public class CommonAPI {
         }
         ExtentTestManager.endTest();
         extent.flush();
-        if (result.getStatus() == ITestResult.FAILURE) {
-            takeScreenshot(result.getName());
+        if (takeScreenshot.equalsIgnoreCase("true")){
+            if (result.getStatus() == ITestResult.FAILURE) {
+                takeScreenshot(result.getName());
+            }
         }
         driver.quit();
     }
@@ -110,23 +114,25 @@ public class CommonAPI {
         }else{
             getLocalDriver(os, browserName);
         }
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        driver.manage().window().maximize();
+        driver.manage().timeouts().implicitlyWait(Integer.parseInt(waitTime), TimeUnit.SECONDS);
+        if(windowMaximize.equalsIgnoreCase("true")){
+            driver.manage().window().maximize();
+        }
         driver.get(url);
     }
     public WebDriver getLocalDriver(String os, String browserName){
         if(browserName.equalsIgnoreCase("chrome")){
             if(os.equalsIgnoreCase("windows")){
-                System.setProperty("webdriver.chrome.driver", "../Generic/src/drivers/chromedriver.exe");
+                System.setProperty("webdriver.chrome.driver", Utilities.projectPath()+"/Generic/src/drivers/chromedriver.exe");
             }else if(os.equalsIgnoreCase("OS X")){
-                System.setProperty("webdriver.chrome.driver", "../Generic/src/drivers/chromedriver");
+                System.setProperty("webdriver.chrome.driver", Utilities.projectPath()+"/Generic/src/drivers/chromedriver");
             }
             driver = new ChromeDriver();
         }else if(browserName.equalsIgnoreCase("firefox")){
             if(os.equalsIgnoreCase("windows")){
-                System.setProperty("webdriver.gecko.driver", "../Generic/src/drivers/geckodriver.exe");
+                System.setProperty("webdriver.gecko.driver", Utilities.projectPath()+"/Generic/src/drivers/geckodriver.exe");
             }else if(os.equalsIgnoreCase("OS X")){
-                System.setProperty("webdriver.gecko.driver", "../Generic/src/drivers/geckodriver");
+                System.setProperty("webdriver.gecko.driver", Utilities.projectPath()+"/Generic/src/drivers/geckodriver");
             }
             driver = new FirefoxDriver();
         }
@@ -254,7 +260,7 @@ public class CommonAPI {
 
         File file = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
         try {
-            FileUtils.copyFile(file, new File(System.getProperty("user.dir")+File.pathSeparator+ "screenshots"+File.pathSeparator+screenshotName+" "+df.format(date)+".png"));
+            FileUtils.copyFile(file, new File(System.getProperty("user.dir")+File.separator+ "screenshots"+File.separator+screenshotName+" "+df.format(date)+".png"));
             System.out.println("Screenshot captured");
         } catch (Exception e) {
             String path = System.getProperty("user.dir")+ "/screenshots/"+screenshotName+" "+df.format(date)+".png";
