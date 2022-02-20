@@ -24,7 +24,7 @@ public class Utilities {
     }
 
     public static String projectPath(){
-        String fileSeparator = File.separator;
+        String fileSeparator = File.pathSeparator;
         Properties prop = Utilities.loadProperties("../config.properties");
         String userDir = System.getProperty("user.dir");
         String projectName = prop.getProperty("project.name");
@@ -36,7 +36,13 @@ public class Utilities {
                 break;
             }
         }
+        System.out.println(StringUtil.join(newDirectories, fileSeparator));
         return StringUtil.join(newDirectories, fileSeparator);
     }
 
+    public static void main(String[] args) {
+        System.out.println(Utilities.projectPath());
+//        String fileSeparator = File.separator;
+//        System.out.println(fileSeparator);
+    }
 }

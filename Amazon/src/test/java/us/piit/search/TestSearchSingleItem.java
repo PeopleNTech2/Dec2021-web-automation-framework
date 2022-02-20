@@ -5,6 +5,7 @@ import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import us.piit.HomePage;
+import utility.Utilities;
 
 public class TestSearchSingleItem extends CommonAPI{
 
@@ -15,16 +16,17 @@ public class TestSearchSingleItem extends CommonAPI{
         homePage.searchElement("java book");
         Assert.assertEquals(getTitle(), "Amazon.com : java book");
     }
-    //@Test
+    @Test
     public void searchSeleniumBook(){
         HomePage homePage = new HomePage(driver);
         homePage.searchElement("selenium book");
         Assert.assertEquals(getTitle(), "Amazon.com : selenium book");
     }
-    //@Test
+    @Test
     public void searchComputer(){
         HomePage homePage = new HomePage(driver);
         homePage.searchInOneClick("computer");
         Assert.assertEquals(getTitle(), "Amazon.com : computer");
     }
+
 }

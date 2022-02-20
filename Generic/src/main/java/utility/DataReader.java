@@ -81,7 +81,7 @@ public class DataReader {
     }
 
 //    public static void main(String[] args) {
-//        String path = "/Users/nacer-zimu/IdeaProjects/Dec2021-web-automation-framework/Amazon/data/my_data.xlsx";
+//        String path = "C:\\Users\\PeopleNTech NY Class\\IdeaProjects\\Dec2021-web-automation-framework\\Amazon\\data\\my_data.xlsx";
 //        DataReader dr = new DataReader();
 //        System.out.println(dr.getValueForGivenHeaderAndKey(path, "Sheet1", "id", "id001"));
 //    }

@@ -11,10 +11,6 @@ import java.util.Properties;
 
 public class TestLogin extends CommonAPI {
 
-    Properties prop = Utilities.loadProperties("src/test/resources/amazon.properties");
-    String username = prop.getProperty("username");
-    String password = prop.getProperty("password");
-
     @Test
     public void loginWithInvalidEmail(){
         HomePage homePage = new HomePage(driver);

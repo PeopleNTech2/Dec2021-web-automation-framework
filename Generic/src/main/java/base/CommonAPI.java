@@ -34,12 +34,12 @@ public class CommonAPI {
 
     public WebDriver driver;
 
-    Properties prop = Utilities.loadProperties(Utilities.projectPath()+"/config.properties");
-    String browserstackUsername = prop.getProperty("browserstack.username");
-    String browserstackPassword = prop.getProperty("browserstack.password");
-    String takeScreenshot = prop.getProperty("take.screenshot", "false");
-    String waitTime = prop.getProperty("wait.time", "10");
-    String windowMaximize = prop.getProperty("window.maximize", "false");
+    //public Properties prop = Utilities.loadProperties(Utilities.projectPath()+"/config.properties");
+//    String browserstackUsername = prop.getProperty("browserstack.username");
+//    String browserstackPassword = prop.getProperty("browserstack.password");
+//    String takeScreenshot = prop.getProperty("take.screenshot", "false");
+//    String waitTime = prop.getProperty("wait.time", "10");
+//    String windowMaximize = prop.getProperty("window.maximize", "false");
 
     public static com.relevantcodes.extentreports.ExtentReports extent;
 
@@ -81,11 +81,11 @@ public class CommonAPI {
         }
         ExtentTestManager.endTest();
         extent.flush();
-        if (takeScreenshot.equalsIgnoreCase("true")){
+//        if (takeScreenshot.equalsIgnoreCase("true")){
             if (result.getStatus() == ITestResult.FAILURE) {
                 takeScreenshot(result.getName());
             }
-        }
+//        }
         driver.quit();
     }
     @AfterSuite
@@ -107,30 +107,30 @@ public class CommonAPI {
                       @Optional("https://wwww.google.com") String url) throws MalformedURLException {
         if(useCloudEnv == true){
             if(cloudEnvName.equalsIgnoreCase("browserstack")){
-                getCloudDriver(cloudEnvName, browserstackUsername, browserstackPassword, os, os_version, browserName, browserVersion);
+                //getCloudDriver(cloudEnvName, browserstackUsername, browserstackPassword, os, os_version, browserName, browserVersion);
             }else if(cloudEnvName.equalsIgnoreCase("saucelabs")){
                 getCloudDriver(cloudEnvName, "", "", os, os_version, browserName, browserVersion);
             }
         }else{
             getLocalDriver(os, browserName);
         }
-        driver.manage().timeouts().implicitlyWait(Integer.parseInt(waitTime), TimeUnit.SECONDS);
-        if(windowMaximize.equalsIgnoreCase("true")){
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+//        if(windowMaximize.equalsIgnoreCase("true")){
             driver.manage().window().maximize();
-        }
+//        }
         driver.get(url);
     }
     public WebDriver getLocalDriver(String os, String browserName){
         if(browserName.equalsIgnoreCase("chrome")){
             if(os.equalsIgnoreCase("windows")){
-                System.setProperty("webdriver.chrome.driver", Utilities.projectPath()+"/Generic/src/drivers/chromedriver.exe");
+                System.setProperty("webdriver.chrome.driver", "C:\\Users\\PeopleNTech NY Class\\IdeaProjects\\Dec2021-web-automation-framework\\Generic\\src\\drivers\\chromedriver.exe");
             }else if(os.equalsIgnoreCase("OS X")){
                 System.setProperty("webdriver.chrome.driver", Utilities.projectPath()+"/Generic/src/drivers/chromedriver");
             }
             driver = new ChromeDriver();
         }else if(browserName.equalsIgnoreCase("firefox")){
             if(os.equalsIgnoreCase("windows")){
-                System.setProperty("webdriver.gecko.driver", Utilities.projectPath()+"/Generic/src/drivers/geckodriver.exe");
+                System.setProperty("webdriver.gecko.driver", Utilities.projectPath()+"../Generic/src/drivers/geckodriver.exe");
             }else if(os.equalsIgnoreCase("OS X")){
                 System.setProperty("webdriver.gecko.driver", Utilities.projectPath()+"/Generic/src/drivers/geckodriver");
             }
