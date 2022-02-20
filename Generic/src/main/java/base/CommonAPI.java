@@ -125,7 +125,7 @@ public class CommonAPI {
             if(os.equalsIgnoreCase("windows")){
                 System.setProperty("webdriver.chrome.driver", "C:\\Users\\PeopleNTech NY Class\\IdeaProjects\\Dec2021-web-automation-framework\\Generic\\src\\drivers\\chromedriver.exe");
             }else if(os.equalsIgnoreCase("OS X")){
-                System.setProperty("webdriver.chrome.driver", Utilities.projectPath()+"/Generic/src/drivers/chromedriver");
+                System.setProperty("webdriver.chrome.driver", "C:\\Users\\PeopleNTech NY Class\\IdeaProjects\\Dec2021-web-automation-framework\\Generic\\src\\drivers\\chromedriver");
             }
             driver = new ChromeDriver();
         }else if(browserName.equalsIgnoreCase("firefox")){

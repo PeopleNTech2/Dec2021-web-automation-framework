@@ -36,7 +36,7 @@
                 <version>2.22.1</version>
                 <configuration>
                     <suiteXmlFiles>
-                        <suiteXmlFile>\IdeaProjects\Dec2021-web-automation-framework\Amazon\src\test\resources\Runner.xml</suiteXmlFile>
+                        <suiteXmlFile>C:\Users\PeopleNTech NY Class\IdeaProjects\Dec2021-web-automation-framework\Amazon\target\test-classes\Runner.xml</suiteXmlFile>
                     </suiteXmlFiles>
                 </configuration>
             </plugin>
